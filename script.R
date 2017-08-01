@@ -18,11 +18,13 @@ for (i in 0:36) {
   for (j in 1:100) {
     
     
-    data[j+(i*100),] <- unlist(ContentScraper(pageinfo[[1]][[10]], c(paste0("//*[@id='main']/div[2]/div[1]/div[2]/div[3]/div/div/div[",j,"]/div[2]/div"),
-                                                                     paste0("//*[@id='main']/div[2]/div[1]/div[2]/div[3]/div/div/div[",j,"]/div[3]/a"),
-                                                                     paste0("//*[@id='main']/div[2]/div[1]/div[2]/div[3]/div/div/div[",j,"]/div[4]/span[2]"),
-                                                                     paste0('//*[@id="main"]/div[2]/div[1]/div[2]/div[3]/div/div/div[',j,']/div[5]/text()')),
-                                              c("critics", "title", "user", "date")))
+    data[j+(i*100),] <- unlist(
+                          ContentScraper(
+                            pageinfo[[1]][[10]], 
+                              c(paste0("//*[@id='main']/div[2]/div[1]/div[2]/div[3]/div/div/div[",j,"]/div[2]/div"),
+                                paste0("//*[@id='main']/div[2]/div[1]/div[2]/div[3]/div/div/div[",j,"]/div[3]/a"),
+                                paste0("//*[@id='main']/div[2]/div[1]/div[2]/div[3]/div/div/div[",j,"]/div[4]/span[2]"),
+                                paste0('//*[@id="main"]/div[2]/div[1]/div[2]/div[3]/div/div/div[',j,']/div[5]/text()'))))
     
     link <- c(link, read_html(pageinfo[[1]][[10]]) %>% 
                 html_nodes(xpath = paste0('//*[@id="main"]/div[2]/div[1]/div[2]/div[3]/div/div/div[',j,']/div[3]/a')) %>%
