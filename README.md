@@ -1,2 +1,2 @@
 # metacritic
-Scrapping metacritic games data
+Scrapping metacritic pc games data
